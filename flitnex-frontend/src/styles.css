@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --netflix-red: #E50914;
+  --netflix-black: #141414;
+  --netflix-dark-gray: #181818;
+  --netflix-light-gray: #2F2F2F;
+}
+
+body {
+  @apply bg-black text-white min-h-screen;
+  background-color: var(--netflix-black);
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-[#E50914] text-white hover:bg-[#B20710] focus:ring-2 focus:ring-[#E50914] focus:ring-offset-2 focus:ring-offset-[#141414];
+  }
+
+  .btn-secondary {
+    @apply bg-[#2F2F2F] text-white hover:bg-[#404040];
+  }
+
+  .form-input {
+    @apply bg-[#2F2F2F] border-[#404040] text-white placeholder-gray-400
+           focus:border-[#E50914] focus:ring-[#E50914] focus:ring-opacity-50
+           rounded-md transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-[#181818] rounded-md overflow-hidden hover:scale-105 transition-transform duration-200;
+  }
+
+  .netflix-gradient {
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.3) 100%);
+  }
+
+  .title-card {
+    @apply relative overflow-hidden rounded-md;
+  }
+
+  .title-card:hover .title-info {
+    @apply translate-y-0 opacity-100;
+  }
+
+  .title-info {
+    @apply absolute bottom-0 left-0 right-0 p-4 netflix-gradient
+           transform translate-y-2 opacity-0 transition-all duration-200;
+  }
+
+  .search-container {
+    @apply backdrop-blur-md bg-[#181818]/80 sticky top-0 z-10 p-4 mb-6;
+  }
+
+  .pagination-btn {
+    @apply px-3 py-2 rounded-md bg-[#2F2F2F] text-white hover:bg-[#404040]
+           disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200;
+  }
+
+  .filter-tag {
+    @apply px-3 py-1 rounded-full text-sm font-medium bg-[#2F2F2F] text-white
+           hover:bg-[#404040] cursor-pointer transition-colors duration-200;
+  }
+
+  .filter-tag.active {
+    @apply bg-[#E50914] hover:bg-[#B20710];
+  }
+}

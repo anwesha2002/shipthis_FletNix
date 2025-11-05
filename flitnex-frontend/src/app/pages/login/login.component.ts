@@ -15,7 +15,7 @@ import { AuthService } from '../../services/auth.service';
         </div>
         <form class="mt-8 space-y-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="rounded-md shadow-sm -space-y-px">
-            <div>
+            <div class="mb-2">
               <label for="email" class="sr-only">Email address</label>
               <input
                 id="email"
@@ -25,7 +25,7 @@ import { AuthService } from '../../services/auth.service';
                 placeholder="Email address"
               >
             </div>
-            <div>
+            <div >
               <label for="password" class="sr-only">Password</label>
               <input
                 id="password"

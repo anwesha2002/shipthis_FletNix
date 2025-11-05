@@ -32,7 +32,7 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
                 <div *ngIf="registerForm.get('email')?.errors?.['email']">Please enter a valid email</div>
               </div>
             </div>
-            <div class="mt-2">
+            <div class="mb-2">
               <label for="password" class="sr-only">Password</label>
               <input
                 id="password"
@@ -46,7 +46,7 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
                 <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</div>
               </div>
             </div>
-            <div>
+            <div class="mt-2">
               <label for="age" class="sr-only">Age</label>
               <input
                 id="age"

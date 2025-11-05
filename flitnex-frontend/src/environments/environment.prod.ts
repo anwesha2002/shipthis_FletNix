@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://api.fletnix.com/v1', // Replace with actual production API URL
+  apiBaseUrl: 'https://shipthis-fletnix.onrender.com', // Replace with actual production API URL
 };
 

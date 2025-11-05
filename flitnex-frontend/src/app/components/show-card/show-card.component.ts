@@ -1,5 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Show } from '../../models';
+import { User } from '../../models';
+import {Observable} from "rxjs";
+import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-show-card',
@@ -43,7 +47,7 @@ import { Show } from '../../models';
 
             <!-- Action buttons -->
             <div class="flex items-center space-x-2">
-              <a [routerLink]="['/shows', show.show_id]"
+              <a *ngIf="canView" [routerLink]="['/shows', show.show_id]"
                  class="flex-1 btn btn-primary py-2 text-sm font-medium text-center"
                  [class.opacity-50]="!canView"
                  [class.cursor-not-allowed]="!canView">
@@ -59,6 +63,15 @@ import { Show } from '../../models';
 export class ShowCardComponent {
   @Input() show!: Show;
   @Input() userAge: number = 0;
+
+  currentUser$: Observable<User | null>;
+
+  constructor(
+    private authService: AuthService,
+    // private router: Router
+  ) {
+    this.currentUser$ = this.authService.currentUser$;
+  }
 
   get isRestricted(): boolean {
     if (this.show.rating === 'R' || this.show.rating === 'TV-MA') {

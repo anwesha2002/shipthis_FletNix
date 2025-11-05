@@ -40,7 +40,7 @@ import { AuthService } from '../../services/auth.service';
           <div>
             <button
               type="submit"
-              [disabled]="loginForm.invalid || isLoading"
+              [disabled]=" isLoading"
               class="btn btn-primary w-full"
             >
               {{ isLoading ? 'Signing in...' : 'Sign in' }}
@@ -84,10 +84,34 @@ export class LoginComponent {
           next: () => {
             this.router.navigate(['/']);
           },
-          error: () => {
+          error: (error) => {
             this.isLoading = false;
+            console.error('Login failed:', error);
+            // You might want to show an error message to the user here
+            alert('Login failed: ' + (error.error.error || 'Please try again'));
           }
         });
+    }else{
+      Object.keys(this.loginForm.controls).forEach(key => {
+        const control = this.loginForm.get(key);
+        control?.markAsTouched();
+        if (control?.errors) {
+          console.log(`${key} validation errors:`, control.errors);
+          let errorMessage = `${key.charAt(0).toUpperCase() + key.slice(1)} is invalid: `;
+          if (control.errors['required']) {
+            errorMessage += 'This field is required.';
+          } else if (control.errors['email']) {
+            errorMessage += 'Please enter a valid email address.';
+          } else if (control.errors['minlength']) {
+            errorMessage += `Minimum length is ${control.errors['minlength'].requiredLength} characters.`;
+          } else if (control.errors['min']) {
+            errorMessage += `Minimum value is ${control.errors['min'].min}.`;
+          } else if (control.errors['max']) {
+            errorMessage += `Maximum value is ${control.errors['max'].max}.`;
+          }
+          alert(errorMessage);
+        }
+      });
     }
   }
 }

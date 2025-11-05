@@ -8,6 +8,9 @@ Node.js/Express backend service with angular frontend. Movie searching app with 
 - Mongoose
 - Jest (testing)
 
+<img width="1898" height="915" alt="image" src="https://github.com/user-attachments/assets/c1b4b901-ed2d-4a6f-b3df-47725529d648" />
+
+
 ## Folder structure
 
     backend/

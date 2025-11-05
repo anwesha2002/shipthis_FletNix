@@ -1,5 +1,5 @@
-# Netflix Shows Backend API
-Node.js/Express backend service for managing Netflix shows data.
+# FletNex - Netflix clone
+Node.js/Express backend service with angular frontend. Movie searching app with all netfix functionality.
 
 ## Tech Stack
 - Node.js
